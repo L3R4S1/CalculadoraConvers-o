@@ -1,6 +1,7 @@
 /*
  * Autor: Israel Erlich
  * Data de Criação: 28/08/2024
+ * Data de Conclusão:30/08/2024
  * 
  * Calculadora que realiza as seguintes conversões:
  * 1. Conversão de base 10 para base 2, 8, 16 e código BCD.
