@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void converte_base(int numero, int base) {
+    int resto, i = 0;
+    int resultado[32];
+
+    while (numero > 0) {
+        resto = numero % base;
+        resultado[i] = resto;
+        numero /= base;
+        i++;
+    }
+
+    printf("Número convertido para base %d: ", base);
+    for (int j = i - 1; j >= 0; j--) {
+        if (resultado[j] < 10)
+            printf("%d", resultado[j]);
+        else
+            printf("%c", resultado[j] + 55); // Para base 16 (A-F)
+    }
+    printf("\n");
+}
+
+void converte_para_bcd(int numero) {
+    printf("Conversão para código BCD:\n");
+    while (numero > 0) {
+        int digito = numero % 10;
+        printf("%d -> ", digito);
+        for (int i = 3; i >= 0; i--) {
+            printf("%d", (digito >> i) & 1);
+        }
+        printf("\n");
+        numero /= 10;
+    }
+}
+
+int main() {
+    int numero;
+
+    printf("Digite um número em base 10: ");
+    scanf("%d", &numero);
+
+    printf("Convertendo %d para outras bases:\n\n", numero);
+
+    // Conversão para base 2
+    printf("Base 2:\n");
+    converte_base(numero, 2);
+
+    // Conversão para base 8
+    printf("\nBase 8:\n");
+    converte_base(numero, 8);
+
+    // Conversão para base 16
+    printf("\nBase 16:\n");
+    converte_base(numero, 16);
+
+    // Conversão para BCD
+    printf("\nCódigo BCD:\n");
+    converte_para_bcd(numero);
+
+    return 0; 
+}
